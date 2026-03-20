@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inigo | Graphic Designer Portfolio</title>
+  <style>
+    /* Global Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { line-height: 1.6; background: #F8FAFC; color: #1E293B; font-size: 16px; }
+
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 1.8rem; }
+    p  { font-size: 1rem; color: #475569; }
+
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    section { scroll-margin-top: 70px; }
+    .whatsapp-btn{
+  display:inline-block;
+  background:#25D366; /* WhatsApp green */
+  color:#fff;
+  font-weight:bold;
+  padding:15px 30px;
+  border-radius:50px;
+  margin-left:15px;
+  transition:all 0.3s ease;
+}
+.whatsapp-btn:hover{
+  background:#1ebe57;
+  transform:translateY(-3px);
+}
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #1a1a1a;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      opacity: 0.95;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: #E2E8F0;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+
+    nav ul li a:hover { color: yellow; }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    #home {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url("hero.jpg") center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    #home h1 { font-size: 3rem; margin-bottom: 15px; }
+    #home p { color:rgb(242,61,197); font-size: 1.25rem; max-width: 600px; margin: auto; }
+
+    /* About Section */
+    #about {
+      background: #fff;
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #about .about-text { flex: 1; min-width: 300px; padding-right: 20px; }
+    #about .about-text h2 { text-align: center; font-size: 2rem; margin-bottom: 15px; color: #6C3BFF; font-family: Georgia; }
+    #about .about-text p { font-size: 1rem; line-height: 1.5; color: #475569; }
+
+    #about .about-image { flex: 1; min-width: 300px; text-align: center; }
+    #about .about-image img { width: 80%; max-width: 350px; border-radius: 15px; margin-top: 20px; }
+
+    /* Services */
+    #services { padding: 80px 20px; max-width: 1200px; margin: auto; }
+    #services h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; color: #6C3BFF; }
+    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .service-card {background:linear-gradient(to right,rgb(69,69,69),rgb(73,95,101),rgb(69,69,69)); padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1),0 0 15px rgb(134,120,66); }
+    .service-card h3 {color:yellow; font-size: 1.5rem; margin-bottom: 10px; text-align: center; }
+    .service-card p {margin-right:14px;font-size: 1rem; text-align: center; color: white; }
+
+    /* Portfolio / What I Do */
+    #what-i-do { padding: 80px 20px; max-width: 1200px; margin: auto; background: #F1F5F9; }
+    #what-i-do h2 { font-size: 2.2rem; text-align: center; margin-bottom: 50px; color: #6C3BFF; }
+    .category { text-align: center; margin-bottom: 60px; 
+    }
+
+    /* ✅ FIXED GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .grid img {
+      height: auto;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* Center 3rd image */
+    .grid img:nth-child(3) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: 70%;
+      height: auto;
+    }
+
+    /* Hire Me */
+    #hire-me { height:500px; padding-bottom:14px; background: linear-gradient(135deg,#6C3BFF,#3B82F6); color: #fff; text-align: center; padding: 80px 20px; }
+    #hire-me h2 { font-size: 2rem; margin-bottom: 15px; }
+    #hire-me p { font-size: 1.1rem; margin-bottom: 30px; margin-top:43px; font-size:1.5rem; color:rgb(242,61,197)}
+    .hire-btn { margin-top:23px; display: inline-block; background: linear-gradient(to right,rgb(255,255,255)); color: #6C3BFF; font-weight: bold; padding: 15px 30px; border-radius: 50px; transition: all 0.3s ease; text-decoration: none; }
+    .hire-btn:hover { background: #f0f0f0; transform: translateY(-3px); }
+
+    /* Footer */
+    footer { background: #0F172A; color: #fff; text-align: center; padding: 20px; font-size: 0.9rem; }
+
+    /* Responsive */
+    @media(max-width:768px){
+      header { flex-wrap: wrap; justify-content: space-between; }
+      nav ul { display: none; flex-direction: column; width: 100%; text-align: center; gap: 15px; margin-top: 10px; }
+      nav ul.active { display: flex; }
+      .hamburger { display: flex; }
+
+      #about { flex-direction: column-reverse; text-align: center; }
+      #about .about-text { padding-right: 0; }
+      .grid .centered  {  background:rgb(217,56,23); width: 90%; }
+
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.4rem; }
+      p  { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#home"><img src="Icon.jpg" alt="Logo"></a>
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#what-i-do">Portfolio</a></li>
+        <li><a href="#hire-me">Hire Me</a></li>
+      </ul>
+    </nav>
+
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home">
+    <div class="hero-text">
+      <h1>Inigo | Creative Graphic Designer</h1>
+      <p>Turning ideas into stunning visuals flyers, logos, T-shirts, and more!</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Hi! I’m Inigo, a passionate graphic designer specializing in flyers, posters, logos, and T-shirt designs. My goal is to create visuals that captivate and leave a lasting impression.</p>
+    </div>
+    <div class="about-image">
+      <img src="T.jpg" alt="Inigo Profile">
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>My Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Flyer Design</h3>
+        <p>Creative and custom flyers for weddings, birthdays, and business events.</p>
+      </div>
+      <div class="service-card">
+        <h3>Logo Design</h3>
+        <p>Memorable logos that define your brand identity.</p>
+      </div>
+      <div class="service-card">
+        <h3>T-Shirt Designs</h3>
+        <p>Custom T-shirt graphics for personal, corporate, and promotional use.</p>
+      </div>
+      <div class="service-card">
+        <h3>Branding</h3>
+        <p>Comprehensive design solutions to elevate your brand presence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio / What I Do -->
+  <section id="what-i-do">
+    <h2>Portfolio</h2>
+
+    <div class="category">
+      <h3>Wedding Flyers</h3>
+      <div class="grid">
+        <img src="wedding1.jpg" alt="Wedding Flyer 1" style="height:200px;">
+        <img src="wedding2.jpg" alt="Wedding Flyer 3" style="height:200px; ">
+        <img src="" alt="Wedding Flyer 2" class="centered">
+      </div>
+    </div>
+    
+    <div class="category">
+      <h3>Bussines Flyers</h3>
+      <div class="grid">
+        <img src="bussines2.jpg" alt="Bussines Flyer 1">
+        <img src="love.jpg" alt="Wedding Flyer 2" style="padding-bottom:11px;"> 
+        <img src="" alt="Bussines Flyer 3" class="centered">
+      </div>
+    </div>
+
+    <div class="category">
+      <h3>Naming Ceremony Flyers</h3>
+      <div class="grid">
+        <img src="naming-ceremony.jpg" alt="Naming Flyer 1">
+        <img src="naming-ceremony.jpg" alt="Naming Flyer 2">
+        <img src="" alt="Naming Flyer 3" class="centered">
+      </div>
+    </div>
+
+    <div class="category">
+      <h3>T-shirt Designs</h3>
+      <div class="grid">
+        <img src="t-shirt.png" alt="T-Shirts Design 1" style="height:202px;">
+        <img src="t-shirt1.jpg" alt="T-shirts Design 2" style="height:200px;">
+        <img src="" alt="T-Shirts Design 3" class="centered">
+      </div>
+    </div>
+    
+    <div class="category">
+      <h3>Birth flyers</h3>
+      <div class="grid">
+        <img src="birthday.jpg" alt="Birthdays 1">
+        <img src="birthday.jpg" alt="Birthday 2">
+        <img src="" alt="Birthday 3" class="centered">
+      </div>
+    </div>
+    
+    <div class="category">
+      <h3>Citation flyers</h3>
+      <div class="grid">
+        <img src="thanks.jpg" alt="Citation Flyer 1">
+        <img src="thanks.jpg" alt="Citation Flyer 2">
+        <img src="" alt="Citation Flyer 3" class="centered">
+      </div>
+    </div>
+    
+    <div class="category">
+      <h3>Campaign flyers</h3>
+      <div class="grid">
+        <img src="camp1.jpg" alt="Campaign Flyer 1">
+        <img src="camp2.jpg" alt="Campaign Flyer 2" style="height:190px;">
+        <img src="" alt="Campaign Flyer 3" class="centered">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Hire Me -->
+  <section id="hire-me">
+    <h2>Ready to bring your ideas to life?</h2>
+    <p><b>Contact me today and let's create something amazing!</b></p>
+    <a href="mailto:youremail@example.com" class="hire-btn">Email Me</a>
+    <a href="https://Wa.me/233555358325?textHello" target="_blank" class="whatsapp-btn">WhatsApp Me</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Inigo. All rights reserved.
+  </footer>
+
+  <!-- JS for Mobile Menu -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector("nav ul");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close menu on link click
+    document.querySelectorAll("nav ul li a").forEach(link => {
+      link.addEventListener("click", () => {
+        if(navLinks.classList.contains("active")) {
+          navLinks.classList.remove("active");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
